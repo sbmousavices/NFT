@@ -201,8 +201,8 @@
 
     <script>
         const BASE_URL = "https://sbmousavices.github.io/NFT/";
-
-        // لیست کامل با فرمت نمایشی دلخواه: "Name #XXX"
+        
+        // لیست کامل قهرمانان با فرمت نمایشی دلخواه
         const heroes = [
             "Axe #001", "Beastmaster #002", "Bristleback #003", "Centaur Warrunner #004", "Chaos Knight #005",
             "Clockwerk #006", "Dragon Knight #007", "Earth Spirit #008", "Earthshaker #009", "Elder Titan #010",
@@ -230,19 +230,23 @@
 
         const gallery = document.getElementById('gallery');
 
-        heroes.forEach((heroEntry) => {
-            // جداسازی نام نمایشی و شماره
+        heroes.forEach((heroEntry, index) => {
             const lastSpaceIndex = heroEntry.lastIndexOf(' ');
             const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
-            const idPart = heroEntry.substring(lastSpaceIndex + 1); // e.g., "#001"
+            const idPart = heroEntry.substring(lastSpaceIndex + 1); 
             
-            // ساخت نام فایل مطابق دقیق ریپازیتوری: Name_001.webp
+            // ساخت نام فایل مطابق ریپازیتوری: Name_001.webp
             const safeName = displayName.replace(/[^a-zA-Z0-9]/g, '');
-            const fileNum = idPart.replace('#', ''); // "#001" -> "001"
-            
+            const fileNum = idPart.replace('#', ''); 
             const fileName = `${safeName}_${fileNum}.webp`;
             const fullUrl = `${BASE_URL}${fileName}`;
             
+            // 🔧 دیباگ: چاپ اولین URL ساخته شده در کنسول برای بررسی دقیق
+            if (index === 0) {
+                console.log("🔍 First generated URL:", fullUrl);
+                console.log("️ Check GitHub repo: Is the file named EXACTLY like this? Case-sensitive!");
+            }
+
             const card = document.createElement('div');
             card.className = 'nft-card';
             
@@ -253,7 +257,7 @@
                         alt="${displayName} Dark Fantasy NFT" 
                         class="nft-image" 
                         loading="lazy"
-                        onerror="this.style.display='none'"
+                        onerror="console.error(' Failed to load:', this.src); this.style.display='none'"
                     >
                 </div>
                 <div class="card-info">
