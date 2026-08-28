@@ -200,10 +200,9 @@
     </footer>
 
     <script>
-        // Base URL for NFT images based on your repository structure
         const BASE_URL = "https://sbmousavices.github.io/NFT/";
 
-        // Complete list of 110 Dota 2 Heroes with Display Format: "Name #XXX"
+        // لیست کامل با فرمت نمایشی دلخواه: "Name #XXX"
         const heroes = [
             "Axe #001", "Beastmaster #002", "Bristleback #003", "Centaur Warrunner #004", "Chaos Knight #005",
             "Clockwerk #006", "Dragon Knight #007", "Earth Spirit #008", "Earthshaker #009", "Elder Titan #010",
@@ -231,26 +230,15 @@
 
         const gallery = document.getElementById('gallery');
 
-        // Generate cards dynamically
         heroes.forEach((heroEntry) => {
-            // Split "Name #XXX" into parts
+            // جداسازی نام نمایشی و شماره
             const lastSpaceIndex = heroEntry.lastIndexOf(' ');
             const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
-            const idPart = heroEntry.substring(lastSpaceIndex + 1);           
+            const idPart = heroEntry.substring(lastSpaceIndex + 1); // e.g., "#001"
             
-            // Create filename-safe version matching your repo: Name_Number.webp
-            // Removes spaces, apostrophes, parentheses, etc.
+            // ساخت نام فایل مطابق دقیق ریپازیتوری: Name_001.webp
             const safeName = displayName.replace(/[^a-zA-Z0-9]/g, '');
-            
-            // Extract just the number part (e.g., "001") and remove leading zeros if needed
-            // But since your files are like _01, _02... we need to match that exactly
-            const numStr = idPart.replace('#', ''); // "001" -> "001"
-            
-            // Your actual filenames use single digit for 1-9 (e.g., _01, _10)
-            // So we keep the format as is from the array but ensure it matches file naming
-            // Looking at your links: Axe_01.webp, Beastmaster_02.webp ... Zeus_110.webp
-            // The array has #001, #002... so we need to convert #001 -> _01
-            const fileNum = numStr.length === 3 ? numStr.substring(1) : numStr; // "001" -> "01", "110" -> "110"
+            const fileNum = idPart.replace('#', ''); // "#001" -> "001"
             
             const fileName = `${safeName}_${fileNum}.webp`;
             const fullUrl = `${BASE_URL}${fileName}`;
@@ -265,7 +253,7 @@
                         alt="${displayName} Dark Fantasy NFT" 
                         class="nft-image" 
                         loading="lazy"
-                        onerror="this.src='images/nfts/placeholder.webp'"
+                        onerror="this.style.display='none'"
                     >
                 </div>
                 <div class="card-info">
