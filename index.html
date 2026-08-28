@@ -200,7 +200,6 @@
     </footer>
 
     <script>
-        // ✅ اصلاح حیاتی: حرف N باید بزرگ باشد تا با نام پوشه گیت‌هاب مطابقت داشته باشد
         const BASE_URL = "https://sbmousavices.github.io/NFT/"; 
         
         const heroes = [
@@ -230,6 +229,23 @@
 
         const gallery = document.getElementById('gallery');
 
+        // ✅ تابع کمکی برای دانلود اجباری فایل (بدون باز شدن تب جدید)
+        function forceDownload(url, filename) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(blobUrl);
+                })
+                .catch(err => console.error('Download failed:', err));
+        }
+
         heroes.forEach((heroEntry, index) => {
             const lastSpaceIndex = heroEntry.lastIndexOf(' ');
             const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
@@ -240,10 +256,6 @@
             const fileName = `${safeName}_${fileNum}.webp`;
             const fullUrl = `${BASE_URL}${fileName}`;
             
-            if (index === 0) {
-                console.log("🔍 First generated URL:", fullUrl);
-            }
-
             const card = document.createElement('div');
             card.className = 'nft-card';
             
@@ -260,11 +272,21 @@
                 <div class="card-info">
                     <div class="hero-name">${displayName}</div>
                     <div class="hero-id">${idPart} / ${heroes.length}</div>
-                    <a href="${fullUrl}" download="${fileName}" class="btn-download">Download HD WebP</a>
+                    <button class="btn-download" data-url="${fullUrl}" data-filename="${fileName}">Download HD WebP</button>
                 </div>
             `;
             
             gallery.appendChild(card);
+        });
+
+        // ✅ اضافه کردن رویداد کلیک به تمام دکمه‌های دانلود بعد از ساخته شدن کارت‌ها
+        document.querySelectorAll('.btn-download').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = btn.getAttribute('data-url');
+                const filename = btn.getAttribute('data-filename');
+                forceDownload(url, filename);
+            });
         });
     </script>
 </body>
