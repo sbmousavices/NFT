@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Fantasy Archive | Dota 2 NFT Gallery</title>
+    <meta name="description" content="A curated collection of 110 hyper-realistic Dark Fantasy NFTs inspired by Dota 2 legends. Free HD downloads available.">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Dark Fantasy Archive | Dota 2 NFT Gallery">
+    <meta property="og:description" content="110 AI-generated, upscaled Dark Fantasy warriors. Free HD downloads & upcoming OpenSea mint.">
+    <meta property="og:image" content="https://sbmousavices.github.io/dota-dark-fantasy-nft/images/banner.webp">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: #141418;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #27272a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header & Banner */
+        header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+            background: radial-gradient(circle at top, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .banner-img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-purple);
+            margin-bottom: 2rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .nft-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .nft-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+        }
+
+        .nft-image-wrapper {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .nft-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .nft-card:hover .nft-image {
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            padding: 1.2rem;
+        }
+
+        .hero-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .hero-id {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-download {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .gallery-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+            .card-info { padding: 0.8rem; }
+            .hero-name { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="images/banner.webp" alt="Dark Fantasy Archive Banner" class="banner-img">
+        <div class="status-badge">✨ Free HD Downloads Available</div>
+        <h1>Dark Fantasy Archive</h1>
+        <p class="subtitle">A curated collection of 110 hyper-realistic AI art pieces inspired by Dota 2 legends. Upscaled, detailed, and free to download.</p>
+    </header>
+
+    <main class="gallery-container" id="gallery">
+        <!-- Cards will be injected here by JavaScript -->
+    </main>
+
+    <footer>
+        <p>Part of the <a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" target="_blank">sbmousavices Digital Archive</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">AI-Generated Fan Art | Not affiliated with Valve Corporation</p>
+    </footer>
+
+    <script>
+        // Base URL for NFT images based on your repository structure
+        const BASE_URL = "https://sbmousavices.github.io/NFT/";
+
+        // Complete list of 110 Dota 2 Heroes with Display Format: "Name #XXX"
+        const heroes = [
+            "Axe #001", "Beastmaster #002", "Bristleback #003", "Centaur Warrunner #004", "Chaos Knight #005",
+            "Clockwerk #006", "Dragon Knight #007", "Earth Spirit #008", "Earthshaker #009", "Elder Titan #010",
+            "Huskar #011", "Io (Wisp) #012", "Kunkka #013", "Legion Commander #014", "Lifestealer #015",
+            "Lycan #016", "Magnus #017", "Marci #018", "Night Stalker #019", "Omniknight #020",
+            "Phoenix #021", "Pudge #022", "Sand King #023", "Slardar #024", "Snapfire #025",
+            "Spirit Breaker #026", "Sven #027", "Tidehunter #028", "Timbersaw #029", "Tiny #030",
+            "Treant Protector #031", "Tusk #032", "Underlord #033", "Undying #034", "Wraith King #035",
+            "Anti-Mage #036", "Arc Warden #037", "Bloodseeker #038", "Bounty Hunter #039", "Broodmother #040",
+            "Clinkz #041", "Drow Ranger #042", "Ember Spirit #043", "Faceless Void #044", "Gyrocopter #045",
+            "Hoodwink #046", "Juggernaut #047", "Lone Druid #048", "Luna #049", "Medusa #050",
+            "Meepo #051", "Mirana #052", "Monkey King #053", "Morphling #054", "Naga Siren #055",
+            "Nyx Assassin #056", "Pangolier #057", "Phantom Assassin #058", "Phantom Lancer #059", "Razor #060",
+            "Riki #061", "Shadow Fiend #062", "Slark #063", "Sniper #064", "Spectre #065",
+            "Templar Assassin #066", "Terrorblade #067", "Troll Warlord #068", "Ursa #069", "Vengeful Spirit #070",
+            "Venomancer #071", "Weaver #072", "Ancient Apparition #073", "Batrider #074", "Bane #075",
+            "Crystal Maiden #076", "Dark Seer #077", "Dark Willow #078", "Death Prophet #079", "Disruptor #080",
+            "Enchantress #081", "Enigma #082", "Grimstroke #083", "Invoker #084", "Jakiro #085",
+            "Keeper of the Light #086", "Leshrac #087", "Lich #088", "Lina #089", "Lion #090",
+            "Muerta #091", "Nature's Prophet #092", "Necrophos #093", "Ogre Magi #094", "Oracle #095",
+            "Outworld Destroyer #096", "Puck #097", "Pugna #098", "Queen of Pain #099", "Rubick #100",
+            "Shadow Shaman #101", "Silencer #102", "Skywrath Mage #103", "Storm Spirit #104", "Techies #105",
+            "Tinker #106", "Visage #107", "Warlock #108", "Witch Doctor #109", "Zeus #110"
+        ];
+
+        const gallery = document.getElementById('gallery');
+
+        // Generate cards dynamically
+        heroes.forEach((heroEntry) => {
+            // Split "Name #XXX" into parts
+            const lastSpaceIndex = heroEntry.lastIndexOf(' ');
+            const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
+            const idPart = heroEntry.substring(lastSpaceIndex + 1);           
+            
+            // Create filename-safe version matching your repo: Name_Number.webp
+            // Removes spaces, apostrophes, parentheses, etc.
+            const safeName = displayName.replace(/[^a-zA-Z0-9]/g, '');
+            
+            // Extract just the number part (e.g., "001") and remove leading zeros if needed
+            // But since your files are like _01, _02... we need to match that exactly
+            const numStr = idPart.replace('#', ''); // "001" -> "001"
+            
+            // Your actual filenames use single digit for 1-9 (e.g., _01, _10)
+            // So we keep the format as is from the array but ensure it matches file naming
+            // Looking at your links: Axe_01.webp, Beastmaster_02.webp ... Zeus_110.webp
+            // The array has #001, #002... so we need to convert #001 -> _01
+            const fileNum = numStr.length === 3 ? numStr.substring(1) : numStr; // "001" -> "01", "110" -> "110"
+            
+            const fileName = `${safeName}_${fileNum}.webp`;
+            const fullUrl = `${BASE_URL}${fileName}`;
+            
+            const card = document.createElement('div');
+            card.className = 'nft-card';
+            
+            card.innerHTML = `
+                <div class="nft-image-wrapper">
+                    <img 
+                        src="${fullUrl}" 
+                        alt="${displayName} Dark Fantasy NFT" 
+                        class="nft-image" 
+                        loading="lazy"
+                        onerror="this.src='images/nfts/placeholder.webp'"
+                    >
+                </div>
+                <div class="card-info">
+                    <div class="hero-name">${displayName}</div>
+                    <div class="hero-id">${idPart} / ${heroes.length}</div>
+                    <a href="${fullUrl}" download="${fileName}" class="btn-download">Download HD WebP</a>
+                </div>
+            `;
+            
+            gallery.appendChild(card);
+        });
+    </script>
+</body>
+</html>
