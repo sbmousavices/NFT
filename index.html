@@ -9,8 +9,11 @@
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="Dark Fantasy Archive | Dota 2 NFT Gallery">
     <meta property="og:description" content="110 AI-generated, upscaled Dark Fantasy warriors. Free HD downloads & upcoming OpenSea mint.">
-    <meta property="og:image" content="https://sbmousavices.github.io/dota-dark-fantasy-nft/images/banner.webp">
+    <meta property="og:image" content="https://sbmousavices.github.io/NFT/Banner.webp">
     <meta property="og:type" content="website">
+
+    <!-- ✅ Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
@@ -18,9 +21,11 @@
             --card-bg: #141418;
             --accent-purple: #8b5cf6;
             --accent-blue: #3b82f6;
+            --accent-gold: #d4af37;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
             --border-color: #27272a;
+            --nav-height: 70px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,28 +35,142 @@
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            padding-top: var(--nav-height); /* Space for fixed header */
         }
 
-        /* Header & Banner */
-        header {
-            text-align: center;
-            padding: 4rem 1rem 2rem;
-            background: radial-gradient(circle at top, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        /* ✅ NAVIGATION BAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(10, 10, 12, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ✅ OPENSEA STYLE BANNER BOX */
+        .banner-container {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .opensea-banner-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 1;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0c 100%);
         }
 
         .banner-img {
             width: 100%;
-            max-width: 1200px;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ✅ AVATAR CIRCLE - FIXED POSITION (Fully inside banner) */
+        .avatar-circle {
+            position: absolute;
+            bottom: 20px; /* ✅ Changed from -30px to 20px */
+            left: 30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid var(--bg-color);
+            outline: 2px solid var(--accent-gold);
+            background: var(--card-bg);
+            overflow: hidden;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Header Text Content */
+        .collection-info {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -60,29 +179,16 @@
         .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Status Badge */
-        .status-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid var(--accent-purple);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--accent-purple);
-            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
         /* Gallery Grid */
         .gallery-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1rem 4rem;
+            padding: 2rem 1rem 4rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1.5rem;
         }
 
@@ -92,7 +198,6 @@
             border-radius: 12px;
             overflow: hidden;
             transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
         }
 
         .nft-card:hover {
@@ -124,9 +229,9 @@
         }
 
         .hero-name {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: var(--text-main);
         }
 
@@ -134,14 +239,13 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            letter-spacing: 0.5px;
+            font-family: monospace;
         }
 
         .btn-download {
             display: block;
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.7rem;
             background: transparent;
             border: 1px solid var(--accent-purple);
             color: var(--accent-purple);
@@ -149,6 +253,7 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -165,6 +270,7 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.9rem;
+            background: var(--card-bg);
         }
 
         footer a {
@@ -172,24 +278,156 @@
             text-decoration: none;
         }
 
+        /* ✅ CHATBOT POSITIONING (Fixed at 135px) */
+        #custom-chat-wrapper {
+            position: fixed;
+            top: 135px; 
+            left: 30px;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        #chat-toggle {
+            pointer-events: auto;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d06f 100%);
+            color: #0a0a0c;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 10001;
+            transition: transform 0.2s ease;
+        }
+
+        #chat-toggle:hover { transform: scale(1.05); }
+
+        #chat-box {
+            display: none;
+            position: fixed;
+            top: 185px;
+            left: 30px;
+            width: 320px;
+            height: 450px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            z-index: 10002;
+            overflow: hidden;
+        }
+
+        #chat-header {
+            padding: 15px;
+            background: #0a0a0c;
+            color: #d4af37;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        #close-chat {
+            background: none; border: none; color: #d4af37;
+            font-size: 20px; cursor: pointer;
+        }
+
+        #chat-messages {
+            flex: 1; padding: 15px; overflow-y: auto;
+            font-size: 14px; line-height: 1.6; background: #f9f9f9;
+        }
+
+        #chat-input-area {
+            padding: 10px; border-top: 1px solid #eee;
+            display: flex; gap: 8px; background: white;
+        }
+
+        #user-input {
+            flex: 1; padding: 10px; border: 1px solid #ddd;
+            border-radius: 8px; outline: none; font-family: inherit;
+        }
+
+        #send-btn {
+            padding: 10px 16px; background: #d4af37; color: #0a0a0c;
+            border: none; border-radius: 8px; cursor: pointer; font-weight: 600;
+        }
+
+        .msg-user { margin: 8px 0; text-align: right; }
+        .msg-user span {
+            background: #d4af37; color: #0a0a0c; padding: 8px 12px;
+            border-radius: 12px 12px 0 12px; display: inline-block; max-width: 85%;
+        }
+        .msg-bot { margin: 8px 0; text-align: left; }
+        .msg-bot span {
+            background: #e9ecef; color: #333; padding: 8px 12px;
+            border-radius: 12px 12px 12px 0; display: inline-block; max-width: 85%;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .opensea-banner-box { aspect-ratio: 16 / 9; }
+            .avatar-circle { width: 60px; height: 60px; bottom: 15px; left: 20px; }
             h1 { font-size: 1.8rem; }
             .gallery-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-            .card-info { padding: 0.8rem; }
-            .hero-name { font-size: 0.95rem; }
+            
+            /* Chat Mobile Adjustment */
+            #custom-chat-wrapper { top: 130px; left: 20px; }
+            #chat-box { width: calc(100% - 40px); left: 20px; top: 180px; height: 60vh; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="images/banner.webp" alt="Dark Fantasy Archive Banner" class="banner-img">
+    <!-- ✅ NAVIGATION BAR -->
+    <nav>
+        <!-- ✅ 1. LOGO LINKED TO HOME PAGE WITH "HOME" TEXT -->
+        <a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" class="nav-logo">
+            <img src="https://sbmousavices.github.io/Industrial-Tools/icon-192.png" alt="BM Planning Logo">
+            <span>Home</span>
+        </a>
+        <ul class="nav-links">
+            <!-- ✅ 2. REMOVED DUPLICATE HOME LINK FROM MENU -->
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#about">About</a></li>
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#skills">Expertise</a></li>
+            <li><a href="#" class="active">NFT Gallery</a></li>
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/">Products</a></li>
+            <li><a href="https://sbmousavices.github.io/Articles/index.html">Articles</a></li>
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/Community.html">Community</a></li>
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/hub.html">Hub</a></li>
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- ✅ OPENSEA STYLE BANNER & AVATAR -->
+    <div class="banner-container">
+        <div class="opensea-banner-box">
+            <img src="https://sbmousavices.github.io/NFT/Banner.webp" alt="Dark Fantasy Archive Banner" class="banner-img">
+            <div class="avatar-circle">
+                <img src="https://sbmousavices.github.io/NFT/Avatar.webp" alt="Creator Avatar">
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Info -->
+    <div class="collection-info">
         <div class="status-badge">✨ Free HD Downloads Available</div>
         <h1>Dark Fantasy Archive</h1>
         <p class="subtitle">A curated collection of 110 hyper-realistic AI art pieces inspired by Dota 2 legends. Upscaled, detailed, and free to download.</p>
-    </header>
+    </div>
 
+    <!-- Gallery Grid -->
     <main class="gallery-container" id="gallery">
         <!-- Cards will be injected here by JavaScript -->
     </main>
@@ -199,7 +437,86 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem;">AI-Generated Fan Art | Not affiliated with Valve Corporation</p>
     </footer>
 
+    <!-- ✅ CHATBOT INTERFACE -->
+    <div id="custom-chat-wrapper">
+        <button id="chat-toggle">💬 Chat</button>
+    </div>
+
+    <div id="chat-box">
+        <div id="chat-header">
+            <span>AI Assistant</span>
+            <button id="close-chat">&times;</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-area">
+            <input type="text" id="user-input" placeholder="Type your question..." autocomplete="off">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
     <script>
+        // =============================================
+        // ✅ CHATBOT LOGIC
+        // =============================================
+        const WORKER_URL = 'https://late-moon-4f8a.sbmousavi-ces.workers.dev/';
+        const toggleBtn = document.getElementById('chat-toggle');
+        const closeBtn = document.getElementById('close-chat');
+        const chatBox = document.getElementById('chat-box');
+        const sendBtn = document.getElementById('send-btn');
+        const userInput = document.getElementById('user-input');
+        const messagesDiv = document.getElementById('chat-messages');
+
+        toggleBtn.addEventListener('click', () => {
+            chatBox.style.display = 'flex';
+            toggleBtn.style.display = 'none';
+            userInput.focus();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatBox.style.display = 'none';
+            toggleBtn.style.display = 'block';
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            messagesDiv.innerHTML += `<div class="msg-user"><span>${escapeHtml(message)}</span></div>`;
+            userInput.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            const loadingId = 'loading-' + Date.now();
+            messagesDiv.innerHTML += `<div id="${loadingId}" class="msg-bot"><span style="color:#888; font-style:italic;">Thinking...</span></div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message })
+                });
+                const data = await response.json();
+                document.getElementById(loadingId).remove();
+                const replyText = data.reply || 'Sorry, I could not process that request.';
+                messagesDiv.innerHTML += `<div class="msg-bot"><span>${escapeHtml(replyText)}</span></div>`;
+            } catch (error) {
+                document.getElementById(loadingId).remove();
+                messagesDiv.innerHTML += `<div class="msg-bot"><span style="color:red;">Connection error. Please try again.</span></div>`;
+            }
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        // =============================================
+        // ✅ GALLERY GENERATION LOGIC
+        // =============================================
         const BASE_URL = "https://sbmousavices.github.io/NFT/"; 
         
         const heroes = [
@@ -229,7 +546,6 @@
 
         const gallery = document.getElementById('gallery');
 
-        // ✅ تابع کمکی برای دانلود اجباری فایل (بدون باز شدن تب جدید)
         function forceDownload(url, filename) {
             fetch(url)
                 .then(response => response.blob())
@@ -266,7 +582,7 @@
                         alt="${displayName} Dark Fantasy NFT" 
                         class="nft-image" 
                         loading="lazy"
-                        onerror="console.error('❌ Failed to load:', this.src); this.style.display='none'"
+                        onerror="this.style.display='none'"
                     >
                 </div>
                 <div class="card-info">
@@ -279,7 +595,6 @@
             gallery.appendChild(card);
         });
 
-        // ✅ اضافه کردن رویداد کلیک به تمام دکمه‌های دانلود بعد از ساخته شدن کارت‌ها
         document.querySelectorAll('.btn-download').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
