@@ -544,20 +544,35 @@
 
         const gallery = document.getElementById('gallery');
 
-        function forceDownload(url, filename) {
-            fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = blobUrl;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
+        // ✅ FIXED: Convert display name to PascalCase filename (e.g., "Keeper of the Light" -> "KeeperOfTheLight")
+        function toPascalCase(str) {
+            return str.replace(/[^a-zA-Z\s]/g, '') // Remove non-alpha chars like apostrophes
+                      .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+        }
+
+        // ✅ FIXED: Reliable blob-based download for cross-origin files
+        async function forceDownload(url, filename) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
                     document.body.removeChild(a);
                     window.URL.revokeObjectURL(blobUrl);
-                })
-                .catch(err => console.error('Download failed:', err));
+                }, 100);
+            } catch (err) {
+                console.error('Download failed:', err);
+                alert('Download failed. Please try again or use Read Online.');
+            }
         }
 
         heroes.forEach((heroEntry, index) => {
@@ -565,7 +580,8 @@
             const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
             const idPart = heroEntry.substring(lastSpaceIndex + 1); 
             
-            const safeName = displayName.replace(/[^a-zA-Z0-9]/g, '');
+            // ✅ Use PascalCase conversion instead of simple character removal
+            const safeName = toPascalCase(displayName);
             const fileNum = idPart.replace('#', ''); 
             const fileName = `${safeName}_${fileNum}.webp`;
             const fullUrl = `${BASE_URL}${fileName}`;
