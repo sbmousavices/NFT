@@ -76,6 +76,7 @@
             display: flex;
             gap: 1.5rem;
             list-style: none;
+            align-items: center; /* Added to align sign-in button vertically */
         }
 
         .nav-links a {
@@ -88,6 +89,28 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--accent-gold);
+        }
+
+        /* ✅ SIGN IN BUTTON STYLE */
+        .btn-signin {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: 50px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-signin:hover {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
         /* Mobile Menu Toggle */
@@ -389,7 +412,7 @@
 </head>
 <body>
 
-    <!-- ✅ NAVIGATION BAR -->
+    <!-- ✅ NAVIGATION BAR WITH SIGN IN BUTTON -->
     <nav>
         <a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" class="nav-logo">
             <img src="https://sbmousavices.github.io/Industrial-Tools/icon-192.png" alt="BM Planning Logo">
@@ -397,13 +420,16 @@
         </a>
         <ul class="nav-links">
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#about">About</a></li>
-            <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#skills">Expertise</a></li>
+            <!-- ✅ CHANGED EXPERTISE TO WEB DESIGN WITH LINK TO THEME PAGE -->
+            <li><a href="https://sbmousavices.github.io/Theme/index.html">Web Design</a></li>
             <li><a href="#" class="active">NFT Gallery</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/">Products</a></li>
             <li><a href="https://sbmousavices.github.io/Articles/index.html">Articles</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/Community.html">Community</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/hub.html">Hub</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#contact">Contact</a></li>
+            <!-- ✅ SIGN IN BUTTON ADDED HERE -->
+            <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" class="btn-signin"><i class="fas fa-user"></i> Sign In</a></li>
         </ul>
         <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
     </nav>
