@@ -36,6 +36,83 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             padding-top: var(--nav-height); /* Space for fixed header */
+            overflow-x: hidden;
+        }
+
+        /* ✅ SPLASH SCREEN STYLES */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .splash-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            object-fit: cover;
+        }
+
+        .splash-title {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            font-weight: 700;
+        }
+
+        .splash-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .enter-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #f4d06f 100%);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ✅ NAVIGATION BAR */
@@ -76,7 +153,7 @@
             display: flex;
             gap: 1.5rem;
             list-style: none;
-            align-items: center; /* Added to align sign-in button vertically */
+            align-items: center;
         }
 
         .nav-links a {
@@ -91,7 +168,6 @@
             color: var(--accent-gold);
         }
 
-        /* ✅ SIGN IN BUTTON STYLE */
         .btn-signin {
             display: inline-flex;
             align-items: center;
@@ -113,12 +189,11 @@
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* ✅ FLOATING BACK TO DIGITAL CARD BUTTON */
         .floating-back-btn {
             position: fixed;
-            top: calc(var(--nav-height) + 15px); /* Exactly below navbar with small gap */
-            right: 5%; /* Aligned to the right side */
-            z-index: 999; /* Below nav but above content */
+            top: calc(var(--nav-height) + 15px);
+            right: 5%;
+            z-index: 999;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -142,7 +217,6 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* Mobile Menu Toggle */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -152,7 +226,6 @@
             cursor: pointer;
         }
 
-        /* ✅ OPENSEA STYLE BANNER BOX */
         .banner-container {
             max-width: 1200px;
             margin: 2rem auto 0;
@@ -178,7 +251,6 @@
             display: block;
         }
 
-        /* ✅ AVATAR CIRCLE - FIXED POSITION (Fully inside banner) */
         .avatar-circle {
             position: absolute;
             bottom: 20px;
@@ -200,7 +272,6 @@
             object-fit: cover;
         }
 
-        /* Header Text Content */
         .collection-info {
             text-align: center;
             padding: 3rem 1rem 2rem;
@@ -234,7 +305,6 @@
             line-height: 1.8;
         }
 
-        /* Gallery Grid */
         .gallery-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -315,7 +385,6 @@
             color: white;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
@@ -330,7 +399,7 @@
             text-decoration: none;
         }
 
-        /* ✅ CHATBOT POSITIONING (Fixed at 135px) - ONLY ONE INSTANCE */
+        /* ✅ CHATBOT POSITIONING */
         #custom-chat-wrapper {
             position: fixed;
             top: 135px; 
@@ -424,6 +493,46 @@
             border-radius: 12px 12px 12px 0; display: inline-block; max-width: 85%;
         }
 
+        /* ✅ MUSIC CONTROL BUTTON STYLES */
+        .music-control-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 10, 12, 0.9);
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .music-control-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .music-control-btn.playing {
+            animation: pulse-gold 2s infinite;
+            border-color: #f4d06f;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .nav-links { display: none; }
@@ -433,37 +542,56 @@
             h1 { font-size: 1.8rem; }
             .gallery-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
             
-            /* Chat Mobile Adjustment */
             #custom-chat-wrapper { top: 130px; left: 20px; }
             #chat-box { width: calc(100% - 40px); left: 20px; top: 180px; height: 60vh; }
             
-            /* Adjust floating button for mobile */
             .floating-back-btn {
                 right: 20px;
                 top: calc(var(--nav-height) + 10px);
                 padding: 0.4rem 1rem;
                 font-size: 0.8rem;
             }
+            
+            .music-control-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1rem; }
+            .splash-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ✅ FLOATING BACK TO DIGITAL CARD BUTTON (BELOW NAV, RIGHT SIDE) -->
+    <!-- ✅ SPLASH SCREEN OVERLAY -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="https://sbmousavices.github.io/NFT/Avatar.webp" alt="Logo" class="splash-logo">
+            <h1 class="splash-title">Dark Fantasy Archive</h1>
+            <p class="splash-subtitle">Dota 2 NFT Collection</p>
+            <button id="enter-site-btn" class="enter-btn">Enter NFT Gallery</button>
+        </div>
+    </div>
+
+    <!-- ✅ AUDIO ELEMENT FOR BACKGROUND MUSIC -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://sbmousavices.github.io/NFT/music-dota2.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ✅ MUSIC CONTROL BUTTON -->
+    <button class="music-control-btn playing" id="music-toggle" title="Toggle Music">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- ✅ FLOATING BACK TO DIGITAL CARD BUTTON -->
     <a href="https://sbmousavices.github.io/Theme/digital-card-en.html" class="floating-back-btn">
         <i class="fas fa-arrow-left"></i> Back to Digital Card
     </a>
 
-    <!-- ✅ NAVIGATION BAR WITH SIGN IN BUTTON -->
+    <!-- ✅ NAVIGATION BAR -->
     <nav>
         <a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" class="nav-logo">
             <img src="https://sbmousavices.github.io/Industrial-Tools/icon-192.png" alt="BM Planning Logo">
             <span>Home</span>
         </a>
         <ul class="nav-links">
-            <!-- ✅ CHANGED ABOUT TO RESUME BUILDER WITH LINK -->
             <li><a href="https://sbmousavices.github.io/Resume/Resume_Builder_English.html">Resume Builder</a></li>
-            <!-- ✅ CHANGED EXPERTISE TO WEB DESIGN WITH LINK TO THEME PAGE -->
             <li><a href="https://sbmousavices.github.io/Theme/index.html">Web Design</a></li>
             <li><a href="#" class="active">NFT Gallery</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/">Products</a></li>
@@ -471,7 +599,6 @@
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/Community.html">Community</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/hub.html">Hub</a></li>
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html#contact">Contact</a></li>
-            <!-- ✅ SIGN IN BUTTON ADDED HERE -->
             <li><a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" class="btn-signin"><i class="fas fa-user"></i> Sign In</a></li>
         </ul>
         <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
@@ -504,7 +631,7 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem;">AI-Generated Fan Art | Not affiliated with Valve Corporation</p>
     </footer>
 
-    <!-- ✅ SINGLE CHATBOT INTERFACE (Correct Position) -->
+    <!-- ✅ SINGLE CHATBOT INTERFACE -->
     <div id="custom-chat-wrapper">
         <button id="chat-toggle">💬 Chat</button>
     </div>
@@ -522,6 +649,49 @@
     </div>
 
     <script>
+        // =============================================
+        // ✅ MUSIC & SPLASH SCREEN LOGIC
+        // =============================================
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const splashScreen = document.getElementById('splash-screen');
+        const enterBtn = document.getElementById('enter-site-btn');
+        
+        let isPlaying = false;
+        bgMusic.volume = 0.4;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                musicToggle.classList.remove('playing');
+            } else {
+                bgMusic.play().then(() => {
+                    musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    musicToggle.classList.add('playing');
+                }).catch(error => {
+                    console.log("Playback failed:", error);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            toggleMusic();
+        });
+
+        // Handle Enter Button Click
+        enterBtn.addEventListener('click', () => {
+            // 1. Hide Splash Screen
+            splashScreen.classList.add('hidden');
+            
+            // 2. Start Music
+            if (!isPlaying) {
+                toggleMusic();
+            }
+        });
+
         // =============================================
         // ✅ CHATBOT LOGIC
         // =============================================
