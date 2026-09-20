@@ -22,6 +22,8 @@
             --accent-purple: #8b5cf6;
             --accent-blue: #3b82f6;
             --accent-gold: #d4af37;
+            --accent-green: #2ecc71;
+            --accent-green-hover: #27ae60;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
             --border-color: #27272a;
@@ -364,25 +366,193 @@
             font-family: monospace;
         }
 
-        .btn-download {
+        .btn-pay-download {
             display: block;
             width: 100%;
             padding: 0.7rem;
-            background: transparent;
-            border: 1px solid var(--accent-purple);
-            color: var(--accent-purple);
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-hover) 100%);
+            border: none;
+            color: white;
             text-align: center;
-            text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
         }
 
-        .btn-download:hover {
-            background: var(--accent-purple);
-            color: white;
+        .btn-pay-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+        }
+
+        /* ✅ PAYMENT SECTION STYLES */
+        .payment-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #f4d06f 100%);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .info-value-box {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #f4d06f;
+            margin-bottom: 1rem;
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #f4d06f 100%);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .copy-message {
+            color: var(--accent-green);
+            font-weight: 600;
+            height: 20px;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        /* ✅ ALL COLLECTION SPECIAL BOX */
+        .all-collection-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .all-collection-box:hover {
+            border-color: var(--accent-green);
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(212, 175, 55, 0.15) 100%);
+            transform: translateY(-2px);
+        }
+
+        .all-collection-box strong {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .purchase-cta {
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .purchase-cta p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         footer {
@@ -533,6 +703,16 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
+        @keyframes highlight-section {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        .payment-section.highlight {
+            animation: highlight-section 1.5s ease-out;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .nav-links { display: none; }
@@ -554,6 +734,8 @@
             
             .music-control-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1rem; }
             .splash-title { font-size: 1.8rem; }
+            
+            .info-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -616,15 +798,75 @@
 
     <!-- Collection Info -->
     <div class="collection-info">
-        <div class="status-badge">✨ Free HD Downloads Available</div>
+        <div class="status-badge">✨ Premium NFT Collection</div>
         <h1>Dark Fantasy Archive</h1>
-        <p class="subtitle">A curated collection of 110 hyper-realistic AI art pieces inspired by Dota 2 legends. Upscaled, detailed, and free to download.</p>
+        <p class="subtitle">A curated collection of 110 hyper-realistic AI art pieces inspired by Dota 2 legends. Each NFT is priced at 0.1 USDT.</p>
     </div>
 
     <!-- Gallery Grid -->
     <main class="gallery-container" id="gallery">
         <!-- Cards will be injected here by JavaScript -->
     </main>
+
+    <!-- ✅ PAYMENT SECTION -->
+    <section class="payment-section" id="payment-section">
+        <div class="section-header">
+            <p class="section-subtitle">How to Purchase</p>
+            <h2 class="section-title">Payment & <span>Contact</span></h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-wallet"></i></div>
+                <h3 class="info-title">USDT Wallet (TRC-20)</h3>
+                <div class="info-value-box" id="walletAddress">TS3n4CdRUJY9zQ8yigRXMJRJd951L3rCv2</div>
+                <button class="copy-btn" onclick="copyText('walletAddress', 'walletMessage')">
+                    <i class="fas fa-copy"></i> Copy Wallet Address
+                </button>
+                <div class="copy-message" id="walletMessage"></div>
+                
+                <!-- ✅ ALL COLLECTION SPECIAL BOX -->
+                <div class="all-collection-box">
+                    <i class="fas fa-gem"></i> All Collection <strong>5 USDT</strong>
+                </div>
+            </div>
+
+            <div class="info-card" style="text-align: left; padding: 1.5rem; cursor: default;">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div class="info-icon" style="margin: 0 auto 1rem;"><i class="fas fa-paper-plane"></i></div>
+                    <h3 class="info-title">Send Direct Message</h3>
+                </div>
+                
+                <form action="https://formsubmit.co/sbmousavi@proton.me" method="POST">
+                    <input type="hidden" name="_next" value="https://sbmousavices.github.io/NFT/">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New NFT Purchase Inquiry">
+
+                    <label style="display: block; font-size: 0.8rem; color: #f4d06f; margin-bottom: 6px; font-weight: 600;">Full Name</label>
+                    <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--text-main); font-family: inherit; outline: none;">
+
+                    <label style="display: block; font-size: 0.8rem; color: #f4d06f; margin-bottom: 6px; font-weight: 600;">Email Address</label>
+                    <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--text-main); font-family: inherit; outline: none;">
+
+                    <label style="display: block; font-size: 0.8rem; color: #f4d06f; margin-bottom: 6px; font-weight: 600;">NFT Code / Hero Name</label>
+                    <input type="text" id="productCodeInput" name="product_code" placeholder="Click on a NFT to auto-fill" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--text-main); font-family: inherit; outline: none;">
+
+                    <label style="display: block; font-size: 0.8rem; color: #f4d06f; margin-bottom: 6px; font-weight: 600;">Description / Transaction Hash</label>
+                    <textarea name="message" placeholder="Describe your request or paste TX Hash..." required style="width: 100%; padding: 10px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; color: var(--text-main); font-family: inherit; outline: none; min-height: 80px; resize: vertical;"></textarea>
+
+                    <button type="submit" class="submit-btn" style="width: 100%; padding: 12px; background: var(--accent-gold); color: var(--bg-color); border: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; font-family: inherit;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="purchase-cta">
+            <p>After payment, use the form above to send your transaction details and NFT code.</p>
+            <p>Our team will contact you as soon as possible to deliver your NFT.</p>
+        </div>
+    </section>
 
     <footer>
         <p>Part of the <a href="https://sbmousavices.github.io/Industrial-Tools/EnglishInfo.html" target="_blank">sbmousavices Digital Archive</a></p>
@@ -752,6 +994,51 @@
         }
 
         // =============================================
+        // ✅ COPY TEXT FUNCTION
+        // =============================================
+        function copyText(id, messageId) {
+            const element = document.getElementById(id);
+            const text = element.innerText || element.textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                const message = document.getElementById(messageId);
+                message.innerHTML = '<i class="fas fa-check-circle"></i> Copied successfully!';
+                setTimeout(function() { message.innerHTML = ""; }, 2500);
+            }).catch(function(error) {
+                console.log("Copy failed:", error);
+                alert("Failed to copy. Please copy manually.");
+            });
+        }
+
+        // =============================================
+        // ✅ SCROLL TO PAYMENT SECTION
+        // =============================================
+        function scrollToPaymentSection(nftCode = '') {
+            const target = document.getElementById('payment-section');
+            if (target) {
+                const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 90;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                
+                if (nftCode) {
+                    const inputField = document.getElementById('productCodeInput');
+                    if (inputField) {
+                        inputField.value = nftCode;
+                        inputField.style.borderColor = 'var(--accent-green)';
+                        inputField.style.boxShadow = '0 0 0 3px rgba(46, 204, 113, 0.2)';
+                        setTimeout(() => {
+                            inputField.style.borderColor = 'rgba(212, 175, 55, 0.2)';
+                            inputField.style.boxShadow = 'none';
+                        }, 1500);
+                    }
+                }
+                
+                setTimeout(() => {
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 1500);
+                }, 600);
+            }
+        }
+
+        // =============================================
         // ✅ GALLERY GENERATION LOGIC
         // =============================================
         const BASE_URL = "https://sbmousavices.github.io/NFT/"; 
@@ -783,22 +1070,6 @@
 
         const gallery = document.getElementById('gallery');
 
-        function forceDownload(url, filename) {
-            fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = blobUrl;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    window.URL.revokeObjectURL(blobUrl);
-                })
-                .catch(err => console.error('Download failed:', err));
-        }
-
         heroes.forEach((heroEntry, index) => {
             const lastSpaceIndex = heroEntry.lastIndexOf(' ');
             const displayName = heroEntry.substring(0, lastSpaceIndex).trim(); 
@@ -824,21 +1095,14 @@
                 </div>
                 <div class="card-info">
                     <div class="hero-name">${displayName}</div>
-                    <div class="hero-id">${idPart} / ${heroes.length}</div>
-                    <button class="btn-download" data-url="${fullUrl}" data-filename="${fileName}">Download HD WebP</button>
+                    <div class="hero-id">${idPart} / ${heroes.length} • 0.1 USDT</div>
+                    <button class="btn-pay-download" onclick="scrollToPaymentSection('${heroEntry}')">
+                        <i class="fas fa-lock"></i> Pay & Download
+                    </button>
                 </div>
             `;
             
             gallery.appendChild(card);
-        });
-
-        document.querySelectorAll('.btn-download').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = btn.getAttribute('data-url');
-                const filename = btn.getAttribute('data-filename');
-                forceDownload(url, filename);
-            });
         });
     </script>
 </body>
